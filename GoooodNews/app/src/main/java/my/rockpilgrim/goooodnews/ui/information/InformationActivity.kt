@@ -28,10 +28,7 @@ class InformationActivity : MvpAppCompatActivity(),
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.information_activity)
-
         Log.i(TAG, "onCreate")
-
-        presenter.getDate(4)
 
         val position = intent.getIntExtra(TAG, -1)
 
@@ -41,6 +38,7 @@ class InformationActivity : MvpAppCompatActivity(),
 
     private fun initView(position:Int) {
         infoTitleTextView.setText(presenter.getTitle(position))
+        infoFullTextView.setText(presenter.getFullText(position))
     }
 
     private fun initToolBar() {

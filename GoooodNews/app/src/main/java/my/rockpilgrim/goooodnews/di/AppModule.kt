@@ -51,12 +51,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideInformationPresenter(): InformationPresenter {
-        return InformationPresenter()
+    fun provideInformationPresenter(model: Model): InformationPresenter {
+        return InformationPresenter(model)
     }
-
-/*    @Provides
-    fun provideInfoPresenter(presenter: InfoPresenter): InfoPresenter {
-        return presenter
-    }*/
 }

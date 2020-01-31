@@ -4,17 +4,16 @@ import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import my.rockpilgrim.goooodnews.data.DataInformation
+import my.rockpilgrim.goooodnews.data.Model
 import my.rockpilgrim.goooodnews.di.App
 import javax.inject.Inject
 
 @InjectViewState
-class InformationPresenter : MvpPresenter<InfoMvpView>(),
+class InformationPresenter(private val model: DataInformation) : MvpPresenter<InfoMvpView>(),
     InfoPresenter {
 
     val TAG = "InformationPresenter"
 
-    @Inject
-    lateinit var data: DataInformation
 
     init {
         App.appComponent.inject(this)
@@ -22,20 +21,15 @@ class InformationPresenter : MvpPresenter<InfoMvpView>(),
     }
 
     override fun getTitle(position: Int): String {
-        return "Title"
-    }
-
-    override fun getDate(position: Int): String {
-        Log.i(TAG, "getDate")
-        return "Date"
+        return model.getTitle(position)
     }
 
     override fun getFullText(position: Int): String {
-        return "FullText"
+        return model.getFullText(position)
     }
 
     override fun getImage(position: Int): String {
-        return "Image"
+        return model.getImage(position)
     }
 
 }
