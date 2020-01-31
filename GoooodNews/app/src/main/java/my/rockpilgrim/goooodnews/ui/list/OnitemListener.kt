@@ -1,4 +1,4 @@
-package my.rockpilgrim.goooodnews.list
+package my.rockpilgrim.goooodnews.ui.list
 
 
 interface OnitemListener {

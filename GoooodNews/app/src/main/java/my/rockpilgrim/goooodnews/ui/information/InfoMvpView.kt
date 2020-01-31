@@ -1,4 +1,4 @@
-package my.rockpilgrim.goooodnews.information
+package my.rockpilgrim.goooodnews.ui.information
 
 import com.arellomobile.mvp.MvpView
 

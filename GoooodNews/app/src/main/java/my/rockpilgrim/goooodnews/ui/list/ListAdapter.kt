@@ -1,4 +1,4 @@
-package my.rockpilgrim.goooodnews.list
+package my.rockpilgrim.goooodnews.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,10 +7,15 @@ import my.rockpilgrim.goooodnews.R
 
 class ListAdapter : RecyclerView.Adapter<ListItemHolder>() {
 
+    private var countItem: Int = 0
     private var itemListener: OnitemListener? = null
 
     fun setItemListener(itemListener: OnitemListener) {
         this.itemListener = itemListener
+    }
+
+    fun setItemCount(countItem: Int) {
+        this.countItem = countItem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemHolder {
@@ -23,6 +28,6 @@ class ListAdapter : RecyclerView.Adapter<ListItemHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 8
+        return countItem
     }
 }

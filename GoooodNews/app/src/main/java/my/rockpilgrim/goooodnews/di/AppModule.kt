@@ -5,11 +5,11 @@ import dagger.Provides
 import my.rockpilgrim.goooodnews.data.DataCard
 import my.rockpilgrim.goooodnews.data.DataInformation
 import my.rockpilgrim.goooodnews.data.Model
-import my.rockpilgrim.goooodnews.information.InfoPresenter
-import my.rockpilgrim.goooodnews.information.InformationPresenter
-import my.rockpilgrim.goooodnews.list.ItemRequest
-import my.rockpilgrim.goooodnews.list.ListAdapter
-import my.rockpilgrim.goooodnews.list.ListPresenter
+import my.rockpilgrim.goooodnews.ui.information.InfoPresenter
+import my.rockpilgrim.goooodnews.ui.information.InformationPresenter
+import my.rockpilgrim.goooodnews.ui.list.ItemRequest
+import my.rockpilgrim.goooodnews.ui.list.ListAdapter
+import my.rockpilgrim.goooodnews.ui.list.ListPresenter
 import javax.inject.Singleton
 
 @Module
@@ -40,8 +40,8 @@ class AppModule {
     /// Presenters
     @Provides
     @Singleton
-    fun provideListPresenter(): ListPresenter {
-        return ListPresenter()
+    fun provideListPresenter(model: Model): ListPresenter {
+        return ListPresenter(model)
     }
 
     @Provides

@@ -1,4 +1,4 @@
-package my.rockpilgrim.goooodnews.list
+package my.rockpilgrim.goooodnews.ui.list
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

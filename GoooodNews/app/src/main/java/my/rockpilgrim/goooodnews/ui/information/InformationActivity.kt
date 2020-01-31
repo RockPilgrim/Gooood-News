@@ -1,4 +1,4 @@
-package my.rockpilgrim.goooodnews.information
+package my.rockpilgrim.goooodnews.ui.information
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,8 @@ import my.rockpilgrim.goooodnews.R
 import my.rockpilgrim.goooodnews.di.App
 import javax.inject.Inject
 
-class InformationActivity : MvpAppCompatActivity(),InfoMvpView {
+class InformationActivity : MvpAppCompatActivity(),
+    InfoMvpView {
 
     val TAG = "InformationActivity"
 

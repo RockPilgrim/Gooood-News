@@ -1,4 +1,4 @@
-package my.rockpilgrim.goooodnews.information
+package my.rockpilgrim.goooodnews.ui.information
 
 import android.util.Log
 import com.arellomobile.mvp.InjectViewState
@@ -8,7 +8,8 @@ import my.rockpilgrim.goooodnews.di.App
 import javax.inject.Inject
 
 @InjectViewState
-class InformationPresenter : MvpPresenter<InfoMvpView>(),InfoPresenter {
+class InformationPresenter : MvpPresenter<InfoMvpView>(),
+    InfoPresenter {
 
     val TAG = "InformationPresenter"
 
