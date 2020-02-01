@@ -25,24 +25,29 @@ class ListPresenter(private val model: Model) : MvpPresenter<ListMvpView>(),
 
     override fun attach() {
         Log.i(TAG,"attach()")
+        load()
+    }
+
+    private fun load(){
         model.loadData(object : OnLoadListener {
             override fun loadDataSuccess() {
                 viewState.dataSuccess()
             }
-
             override fun showError() {
                 viewState.dataError()
             }
         })
     }
 
+    override fun update() {
+        load()
+    }
+
     override fun getTitle(position: Int): String{
-        val title = (R.string.title_not_found)
         return model.getTitle(position)
     }
 
     override fun getDate(position: Int): String{
-        val date = (R.string.pubDate)
         return model.getDate(position)
     }
 

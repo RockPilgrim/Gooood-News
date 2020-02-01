@@ -3,6 +3,7 @@ package my.rockpilgrim.goooodnews.ui.list
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -17,6 +18,7 @@ class ListActivity : MvpAppCompatActivity(),
     ListMvpView {
 
     val TAG="ListActivity"
+    private var isRecyclerInitilized = false
 
     @Inject
     lateinit var adapter: ListAdapter
@@ -32,6 +34,7 @@ class ListActivity : MvpAppCompatActivity(),
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_activity)
+        refreshLayout.isRefreshing = true
         presenter.attach()
     }
 
@@ -40,6 +43,11 @@ class ListActivity : MvpAppCompatActivity(),
         adapter.setItemListener(getItemListener())
         adapter.itemCount=presenter.getCount()
         listRecyclerView.adapter = adapter
+
+        refreshLayout.setOnRefreshListener {
+            presenter.update()
+        }
+        isRecyclerInitilized=true
     }
 
     private fun getItemListener(): OnitemListener = object :
@@ -52,14 +60,24 @@ class ListActivity : MvpAppCompatActivity(),
     }
 
     override fun dataSuccess() {
-        initRecycler()
+        if (!isRecyclerInitilized) {
+            initRecycler()
+        } else {
+            adapter.notifyDataSetChanged()
+        }
+        refreshLayout.isRefreshing = false
     }
 
     override fun dataError() {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        refreshLayout.isRefreshing=false
+        makeToast(getString(R.string.connection_error))
     }
 
     override fun update() {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun makeToast(line: String) {
+        Toast.makeText(this, line, Toast.LENGTH_SHORT).show()
     }
 }
