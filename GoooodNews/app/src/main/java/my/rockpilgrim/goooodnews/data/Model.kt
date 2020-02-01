@@ -34,7 +34,7 @@ class Model : DataInformation{
     }
 
     override fun getImage(position: Int): String {
-        return news[position].enclosure.url
+        return news[position].url
     }
 
     override fun getFullText(position: Int): String {
