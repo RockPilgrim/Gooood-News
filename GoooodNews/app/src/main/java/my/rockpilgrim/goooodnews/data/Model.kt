@@ -19,14 +19,10 @@ class Model : DataInformation{
 
     fun loadData(listener: OnLoadListener){
         Log.i(TAG, "loadData")
-//        var line = "Not found"
 
         val subscribe = api.getFeed().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ feed: Feed ->
-/*                Log.i(TAG, feed.channel.title)
-                Log.i(TAG, feed.channel.items.get(0).title)
-                line = feed.channel.items.get(0).title*/
                 news = feed.channel.items
                 listener.loadDataSuccess()
             }, { error ->
@@ -35,25 +31,22 @@ class Model : DataInformation{
             })
 
         subscriptions.add(subscribe)
-        Log.i(TAG, "loadDataEnd")
     }
 
     override fun getImage(position: Int): String {
-        return ""
+        return news[position].enclosure.url
     }
 
     override fun getFullText(position: Int): String {
-        return news.get(position).fullText
-//        return "Lorem"
+        return news[position].fullText
     }
 
     override fun getTitle(position: Int): String {
-        return news.get(position).title
+        return news[position].title
     }
 
     override fun getDate(position: Int): String {
-        return news.get(position).date
-//        return ""
+        return news[position].date
     }
 
     override fun getCount(): Int {

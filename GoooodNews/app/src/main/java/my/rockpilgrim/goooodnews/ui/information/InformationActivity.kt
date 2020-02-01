@@ -6,6 +6,7 @@ import android.util.Log
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.information_activity.*
 import my.rockpilgrim.goooodnews.R
 import my.rockpilgrim.goooodnews.di.App
@@ -39,6 +40,7 @@ class InformationActivity : MvpAppCompatActivity(),
     private fun initView(position:Int) {
         infoTitleTextView.setText(presenter.getTitle(position))
         infoFullTextView.setText(presenter.getFullText(position))
+        Picasso.get().load(presenter.getImage(position)).into(infoImageView)
     }
 
     private fun initToolBar() {

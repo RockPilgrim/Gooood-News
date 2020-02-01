@@ -47,19 +47,21 @@ dependencies {
     implementation "tech.schoolhelper:moxy-x:1.7.0"
     implementation 'tech.schoolhelper:moxy-x-androidx:1.7.0'
 
-    /// XML parser
-    implementation('org.simpleframework:simple-xml:2.7.1') {
-        exclude module: 'stax-api'
-        exclude module: 'stax'
-        exclude module: 'xpp3'
-    }
-
     /// Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-simplexml:2.6.0'
 
     /// RxJava
-    implementation"io.reactivex.rxjava2:rxjava:2.2.10"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.10"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    /// Tikxml
+    /// latest is 0.8.15, but annotation only up to 0.8.13 ??
+    implementation 'com.tickaroo.tikxml:annotation:0.8.13'
+    implementation 'com.tickaroo.tikxml:core:0.8.13'
+    implementation 'com.tickaroo.tikxml:retrofit-converter:0.8.13'
+    kapt 'com.tickaroo.tikxml:processor:0.8.13'
+
+    /// Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

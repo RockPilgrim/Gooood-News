@@ -1,23 +1,25 @@
 package my.rockpilgrim.retrofittest.pogo
 
-import org.simpleframework.xml.Element
-import org.simpleframework.xml.Root
+import com.tickaroo.tikxml.annotation.Element
+import com.tickaroo.tikxml.annotation.PropertyElement
+import com.tickaroo.tikxml.annotation.Xml
+import my.rockpilgrim.goooodnews.pogo.Enclosure
 
-@Root(name = "item", strict = false)
-data class Article(
-    @field:Element(name = "title", required = false)
-    @param:Element(name = "title", required = false)
+@Xml(name = "item")
+data class Article constructor(
+
+    @PropertyElement(name = "title")
     var title: String,
 
-    @field:Element(name = "category", required = false)
-    @param:Element(name = "category", required = false)
+    @PropertyElement(name = "category")
     var category: String,
 
-    @field:Element(name = "pubDate", required = false)
-    @param:Element(name = "pubDate", required = false)
+    @PropertyElement(name = "pubDate")
     var date: String,
 
-    /// TODO full text <yandex:full-text>
-    @field:Element(name = "description", required = false)
-    @param:Element(name = "description", required = false)
-    var fullText: String)
+    @Element
+    var enclosure:Enclosure,
+
+    @PropertyElement(name = "yandex:full-text")
+    var fullText: String
+)
