@@ -20,4 +20,6 @@ data class Article constructor(
 
     @PropertyElement(name = "yandex:full-text")
     var fullText: String
-)
+){
+    var favorite = false
+}

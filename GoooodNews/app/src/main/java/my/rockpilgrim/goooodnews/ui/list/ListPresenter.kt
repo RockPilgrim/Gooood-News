@@ -47,6 +47,14 @@ class ListPresenter(private val model: Model) : MvpPresenter<ListMvpView>(),
         return model.getTitle(position)
     }
 
+    override fun isFavorite(position: Int): Boolean {
+        return model.isFavorite(position)
+    }
+
+    override fun setFavorite(position: Int, isFavorite: Boolean) {
+        model.setFavorite(position, isFavorite)
+    }
+
     override fun getDate(position: Int): String{
         return model.getDate(position)
     }

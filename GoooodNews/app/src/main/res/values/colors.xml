@@ -6,4 +6,5 @@
 
     <color name="colorTitleText">#FF424242</color>
     <color name="colorWhiteText">#F7F4F4</color>
+    <color name="colorFavorite">#FFCA28</color>
 </resources>

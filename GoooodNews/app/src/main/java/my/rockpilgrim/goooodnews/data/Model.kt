@@ -49,6 +49,14 @@ class Model : DataInformation{
         return news[position].date
     }
 
+    override fun isFavorite(position: Int): Boolean {
+        return news[position].favorite
+    }
+
+    override fun setFavorite(position: Int, isFavorite: Boolean) {
+        news[position].favorite = isFavorite
+    }
+
     override fun getCount(): Int {
         return news.size
     }
