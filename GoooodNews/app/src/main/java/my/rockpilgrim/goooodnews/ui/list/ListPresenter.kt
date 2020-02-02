@@ -29,7 +29,7 @@ class ListPresenter(private val model: Model) : MvpPresenter<ListMvpView>(),
     }
 
     private fun load(){
-        model.loadData(object : OnLoadListener {
+        model.loadAll(object : OnLoadListener {
             override fun loadDataSuccess() {
                 viewState.dataSuccess()
             }
