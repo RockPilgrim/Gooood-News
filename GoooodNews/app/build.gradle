@@ -7,7 +7,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 allprojects {
-
     repositories {
         jcenter()
         google()

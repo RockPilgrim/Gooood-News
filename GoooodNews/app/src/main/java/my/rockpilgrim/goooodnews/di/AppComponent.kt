@@ -8,7 +8,7 @@ import my.rockpilgrim.goooodnews.ui.list.ListItemHolder
 import my.rockpilgrim.goooodnews.ui.list.ListPresenter
 import javax.inject.Singleton
 
-@Component(modules = arrayOf(AppModule::class))
+@Component(modules = [AppModule::class])
 @Singleton
 interface AppComponent {
 

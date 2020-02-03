@@ -5,7 +5,6 @@ import dagger.Provides
 import my.rockpilgrim.goooodnews.data.DataCard
 import my.rockpilgrim.goooodnews.data.DataInformation
 import my.rockpilgrim.goooodnews.data.Model
-import my.rockpilgrim.goooodnews.ui.information.InfoPresenter
 import my.rockpilgrim.goooodnews.ui.information.InformationPresenter
 import my.rockpilgrim.goooodnews.ui.list.ItemRequest
 import my.rockpilgrim.goooodnews.ui.list.ListAdapter

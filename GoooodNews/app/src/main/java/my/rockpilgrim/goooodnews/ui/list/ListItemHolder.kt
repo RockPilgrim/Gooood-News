@@ -1,10 +1,8 @@
 package my.rockpilgrim.goooodnews.ui.list
 
 import android.view.View
-import android.widget.CompoundButton
 import android.widget.TextView
 import android.widget.ToggleButton
-import androidx.core.view.marginTop
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_item.view.*
 import my.rockpilgrim.goooodnews.di.App
@@ -26,9 +24,9 @@ class ListItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         conteiner = itemView.itemContainer
         categoryBtn=itemView.categoryButton
 
-        itemView.itemTitleTextView.setText(itemRequest.getTitle(adapterPosition))
-        itemView.itemDateTextView.setText(itemRequest.getDate(adapterPosition))
-        categoryBtn.setText(itemRequest.getCategory(adapterPosition))
+        itemView.itemTitleTextView.text = itemRequest.getTitle(adapterPosition)
+        itemView.itemDateTextView.text = itemRequest.getDate(adapterPosition)
+        categoryBtn.text = itemRequest.getCategory(adapterPosition)
         favoriteButton=itemView.favoriteButton
 
         favoriteButton.isChecked = itemRequest.isFavorite(adapterPosition)

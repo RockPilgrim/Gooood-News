@@ -1,7 +1,7 @@
 package my.rockpilgrim.goooodnews.data.base
 
 import androidx.room.*
-import my.rockpilgrim.retrofittest.pogo.Article
+import my.rockpilgrim.goooodnews.data.pogo.Article
 
 @Dao
 interface FavoriteDao {

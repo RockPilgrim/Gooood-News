@@ -5,8 +5,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import my.rockpilgrim.goooodnews.api.ApiRSS
-import my.rockpilgrim.retrofittest.pogo.Article
-import my.rockpilgrim.retrofittest.pogo.Feed
+import my.rockpilgrim.goooodnews.data.pogo.Article
+import my.rockpilgrim.goooodnews.data.pogo.Feed
 import java.util.*
 
 class Model : DataInformation{
@@ -56,7 +56,7 @@ class Model : DataInformation{
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ message: String ->
-                Log.i(TAG, "addToDb() ${message}")
+                Log.i(TAG, "addToDb() $message")
             }, {error ->
                 Log.i(TAG, "error localDb add", error)
             })
@@ -68,7 +68,7 @@ class Model : DataInformation{
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ message: String ->
-                Log.i(TAG, "deleteFromDb() ${message}")
+                Log.i(TAG, "deleteFromDb() $message")
             }, {error ->
                 Log.i(TAG, "error localDb delete", error)
             })

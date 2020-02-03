@@ -1,4 +1,4 @@
-package my.rockpilgrim.retrofittest.pogo
+package my.rockpilgrim.goooodnews.data.pogo
 
 import com.tickaroo.tikxml.annotation.Element
 import com.tickaroo.tikxml.annotation.Xml

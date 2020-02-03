@@ -3,12 +3,9 @@ package my.rockpilgrim.goooodnews.ui.list
 import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import my.rockpilgrim.goooodnews.R
-import my.rockpilgrim.goooodnews.data.DataCard
 import my.rockpilgrim.goooodnews.data.Model
 import my.rockpilgrim.goooodnews.data.OnLoadListener
 import my.rockpilgrim.goooodnews.di.App
-import javax.inject.Inject
 
 @InjectViewState
 class ListPresenter(private val model: Model) : MvpPresenter<ListMvpView>(),

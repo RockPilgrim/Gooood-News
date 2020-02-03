@@ -3,7 +3,7 @@ package my.rockpilgrim.goooodnews.api
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import io.reactivex.Observable
-import my.rockpilgrim.retrofittest.pogo.Feed
+import my.rockpilgrim.goooodnews.data.pogo.Feed
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.http.GET
 

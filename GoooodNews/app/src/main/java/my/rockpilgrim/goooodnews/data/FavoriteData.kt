@@ -3,8 +3,8 @@ package my.rockpilgrim.goooodnews.data
 import android.util.Log
 import io.reactivex.Single
 import io.reactivex.SingleOnSubscribe
+import my.rockpilgrim.goooodnews.data.pogo.Article
 import my.rockpilgrim.goooodnews.di.App
-import my.rockpilgrim.retrofittest.pogo.Article
 
 class FavoriteData {
 

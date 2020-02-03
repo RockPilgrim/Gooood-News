@@ -4,9 +4,7 @@ import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import my.rockpilgrim.goooodnews.data.DataInformation
-import my.rockpilgrim.goooodnews.data.Model
 import my.rockpilgrim.goooodnews.di.App
-import javax.inject.Inject
 
 @InjectViewState
 class InformationPresenter(private val model: DataInformation) : MvpPresenter<InfoMvpView>(),

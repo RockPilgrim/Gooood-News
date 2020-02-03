@@ -1,6 +1,5 @@
 package my.rockpilgrim.goooodnews.ui.information
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.arellomobile.mvp.MvpAppCompatActivity
@@ -38,8 +37,8 @@ class InformationActivity : MvpAppCompatActivity(),
     }
 
     private fun initView(position:Int) {
-        infoTitleTextView.setText(presenter.getTitle(position))
-        infoFullTextView.setText(presenter.getFullText(position))
+        infoTitleTextView.text = presenter.getTitle(position)
+        infoFullTextView.text = presenter.getFullText(position)
         Picasso.get().load(presenter.getImage(position)).into(infoImageView)
     }
 

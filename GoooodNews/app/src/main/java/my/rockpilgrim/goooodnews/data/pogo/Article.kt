@@ -1,5 +1,4 @@
-package my.rockpilgrim.retrofittest.pogo
-
+package my.rockpilgrim.goooodnews.data.pogo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.tickaroo.tikxml.annotation.*
