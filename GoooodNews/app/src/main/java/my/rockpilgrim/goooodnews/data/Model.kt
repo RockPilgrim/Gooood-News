@@ -101,7 +101,11 @@ class Model : DataInformation{
     }
 
     override fun getDate(position: Int): String {
-        return news[position].date
+        val tokenizer=StringTokenizer(news[position].date)
+        tokenizer.nextToken()
+        val line =
+            tokenizer.nextToken() + " " + tokenizer.nextToken() + " " + tokenizer.nextToken() + ", " + tokenizer.nextToken()
+        return line
     }
 
     override fun getCategory(position: Int): String {
