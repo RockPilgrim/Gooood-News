@@ -43,8 +43,17 @@ class ListPresenter(private val model: Model) : MvpPresenter<ListMvpView>(),
         load()
     }
 
+    override fun findCategory(category: String) {
+        model.findCategory(category)
+        viewState.update()
+    }
+
     override fun getTitle(position: Int): String{
         return model.getTitle(position)
+    }
+
+    override fun getCategory(position: Int): String {
+        return model.getCategory(position)
     }
 
     override fun isFavorite(position: Int): Boolean {

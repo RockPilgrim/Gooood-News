@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itemContainer"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:layout_width="match_parent"
@@ -37,13 +37,31 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"/>
         </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/categoryButton"
+            android:text="@string/category"
+            android:textSize="12sp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:gravity="start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/itemDateTextView"
             android:text="@string/pubDate"
             android:maxLines="1"
-            android:layout_gravity="end"
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"/>
+    </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

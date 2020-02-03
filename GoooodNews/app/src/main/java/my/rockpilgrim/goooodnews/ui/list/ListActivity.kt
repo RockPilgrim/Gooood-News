@@ -60,11 +60,7 @@ class ListActivity : MvpAppCompatActivity(),
     }
 
     override fun dataSuccess() {
-        if (!isRecyclerInitilized) {
-            initRecycler()
-        } else {
-            adapter.notifyDataSetChanged()
-        }
+        update()
         refreshLayout.isRefreshing = false
     }
 
@@ -74,7 +70,12 @@ class ListActivity : MvpAppCompatActivity(),
     }
 
     override fun update() {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (!isRecyclerInitilized) {
+            initRecycler()
+        } else {
+            adapter.itemCount=presenter.getCount()
+            adapter.notifyDataSetChanged()
+        }
     }
 
     private fun makeToast(line: String) {

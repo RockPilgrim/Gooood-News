@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers
 import my.rockpilgrim.goooodnews.api.ApiRSS
 import my.rockpilgrim.retrofittest.pogo.Article
 import my.rockpilgrim.retrofittest.pogo.Feed
-import java.util.ArrayList
+import java.util.*
 
 class Model : DataInformation{
 
@@ -15,7 +15,6 @@ class Model : DataInformation{
     private val api: ApiRSS = ApiRSS.create()
     private var news = ArrayList<Article>()
 
-    private var favoriteData: FavoriteData = FavoriteData()
     val TAG = "Model"
 
 
@@ -40,7 +39,7 @@ class Model : DataInformation{
     }
 
     private fun connectToDb() {
-        val disposable = favoriteData.loadData()
+        val disposable = FavoriteData().loadData()
             .subscribeOn(Schedulers.single())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ favorites: List<Article> ->
@@ -53,7 +52,7 @@ class Model : DataInformation{
     }
 
     private fun addToDb(article: Article) {
-        val disposable = favoriteData.addData(article)
+        val disposable = FavoriteData().addData(article)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ message: String ->
@@ -65,7 +64,7 @@ class Model : DataInformation{
     }
 
     private fun deleteFromDb(article: Article) {
-        val disposable = favoriteData.deleteData(article)
+        val disposable = FavoriteData().deleteData(article)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ message: String ->
@@ -81,15 +80,32 @@ class Model : DataInformation{
     }
 
     override fun getFullText(position: Int): String {
-        return news[position].fullText
+        val fullText=news[position].fullText.replace("&quot;", "\"")
+        return fullText
+    }
+
+    override fun findCategory(category: String) {
+        val categoryNews = ArrayList<Article>()
+        Log.i(TAG,"findCategory(${ category})")
+        for (article in news) {
+            if (article.category.equals(category)) {
+                categoryNews.add(article)
+            }
+        }
+        news = categoryNews
     }
 
     override fun getTitle(position: Int): String {
-        return news[position].title
+        val title = news[position].title.replace("&quot;", "\"")
+        return title
     }
 
     override fun getDate(position: Int): String {
         return news[position].date
+    }
+
+    override fun getCategory(position: Int): String {
+        return news[position].category
     }
 
     override fun isFavorite(position: Int): Boolean {
@@ -109,6 +125,4 @@ class Model : DataInformation{
     override fun getCount(): Int {
         return news.size
     }
-
-
 }
