@@ -12,10 +12,8 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
 
-    /// Activities
-    fun inject(activity: ListActivity)
-    fun inject(activity: InformationActivity)
-    fun inject(viewHolder: ListItemHolder)
+    fun addListComponent(listModule: ListModule): ListComponent
+    fun addInformationComponent(informationModule: InformationModule): InformationComponent
 
     /// Presenters
     fun inject(presenter: ListPresenter)

@@ -25,7 +25,7 @@ class InformationActivity : MvpAppCompatActivity(),
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.inject(this)
+        App.getInformationComponent().inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.information_activity)
         Log.i(TAG, "onCreate")
@@ -55,5 +55,10 @@ class InformationActivity : MvpAppCompatActivity(),
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.clearInformationComponent()
     }
 }

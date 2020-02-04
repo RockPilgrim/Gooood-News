@@ -31,7 +31,7 @@ class ListActivity : MvpAppCompatActivity(),
     fun provideListPresenter(): ListPresenter = presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.inject(this)
+        App.getListComponent().inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_activity)
         refreshLayout.isRefreshing = true
@@ -56,6 +56,7 @@ class ListActivity : MvpAppCompatActivity(),
             intent = Intent(this@ListActivity, InformationActivity().javaClass)
             intent.putExtra(InformationActivity().TAG, position)
             startActivity(intent)
+            App.clearListComponent()
         }
     }
 

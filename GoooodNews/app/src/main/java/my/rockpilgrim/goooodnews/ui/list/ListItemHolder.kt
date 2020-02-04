@@ -19,7 +19,7 @@ class ListItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
     fun bind(itemListener: OnitemListener?) {
-        App.appComponent.inject(this)
+        App.getListComponent().inject(this)
 
         conteiner = itemView.itemContainer
         categoryBtn=itemView.categoryButton

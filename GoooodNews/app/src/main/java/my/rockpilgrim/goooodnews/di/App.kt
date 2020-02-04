@@ -7,7 +7,33 @@ class App : Application() {
 
     companion object {
         lateinit var appComponent: AppComponent
+
         lateinit var appDatabase: AppDatabase
+
+        /// ListComponent
+        private var listComponent: ListComponent? = null
+
+        fun getListComponent(): ListComponent {
+            if (listComponent == null) {
+                listComponent = appComponent.addListComponent(ListModule())
+            }
+            return listComponent as ListComponent
+        }
+        fun clearListComponent() {
+            listComponent = null
+        }
+        /// InformationComponent
+        private var informationComponent: InformationComponent? = null
+
+        fun getInformationComponent(): InformationComponent {
+            if (informationComponent == null) {
+                informationComponent = appComponent.addInformationComponent(InformationModule())
+            }
+            return informationComponent as InformationComponent
+        }
+        fun clearInformationComponent() {
+            informationComponent = null
+        }
     }
 
     override fun onCreate() {
