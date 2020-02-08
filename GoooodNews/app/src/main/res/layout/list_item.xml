@@ -20,9 +20,10 @@
             <TextView
                 android:id="@+id/itemTitleTextView"
                 android:text="@string/title_not_found"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:textColor="@color/colorTitleText"
-                android:maxLines="1"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:layout_weight="1"
                 android:layout_gravity="start"
                 android:layout_width="0dp"
