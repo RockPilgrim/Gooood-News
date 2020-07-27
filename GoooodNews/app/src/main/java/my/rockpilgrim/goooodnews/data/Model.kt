@@ -15,8 +15,9 @@ class Model : DataInformation{
     private val api: ApiRSS = ApiRSS.create()
     private var news = ArrayList<Article>()
 
-    val TAG = "Model"
-
+    companion object{
+        val TAG = Model::class.java.simpleName
+    }
 
     fun loadAll(listener: OnLoadListener) {
         news = ArrayList<Article>()
@@ -32,7 +33,7 @@ class Model : DataInformation{
                 listener.loadDataSuccess()
                 Log.i(TAG, "loadData() ${Thread.currentThread().name}, size: ${news.size}")
             }, { error ->
-                Log.e(TAG, "error server connection", error)
+                Log.e(TAG, "loadData() error server connection", error)
                 listener.showError()
             })
         subscriptions.add(subscribe)
@@ -46,7 +47,7 @@ class Model : DataInformation{
                 news.addAll(favorites)
                 Log.i(TAG, "connectDb() ${Thread.currentThread().name}, size: ${news.size}")
             }, {error ->
-                Log.i(TAG, "error localDb connection", error)
+                Log.i(TAG, "connectToDb() error localDb connection", error)
             })
         subscriptions.add(disposable)
     }
@@ -75,29 +76,34 @@ class Model : DataInformation{
         subscriptions.add(disposable)
     }
 
+    override fun getArticle(position: Int) =
+        news[position]
+
     override fun getImage(position: Int): String {
         return news[position].url
     }
 
+
     override fun getFullText(position: Int): String {
-        val fullText=news[position].fullText.replace("&quot;", "\"")
-        return fullText
+        return news[position].fullText
+            .replace("&quot;", "\"")
+            .replace("&#13;", "")
     }
 
     override fun findCategory(category: String) {
         val categoryNews = ArrayList<Article>()
-        Log.i(TAG,"findCategory(${ category})")
+        Log.i(TAG,"findCategory(${category})")
         for (article in news) {
-            if (article.category.equals(category)) {
+            if (article.category == category) {
                 categoryNews.add(article)
             }
         }
+        Log.d(TAG, "findCategory() Category.Size: ${categoryNews.size} News.size: ${news.size}")
         news = categoryNews
     }
 
     override fun getTitle(position: Int): String {
-        val title = news[position].title.replace("&quot;", "\"")
-        return title
+        return news[position].title.replace("&quot;", "\"")
     }
 
     override fun getDate(position: Int): String {
@@ -127,6 +133,7 @@ class Model : DataInformation{
     }
 
     override fun getCount(): Int {
+        Log.d(TAG, "getCount() Size: ${news.size}")
         return news.size
     }
 }

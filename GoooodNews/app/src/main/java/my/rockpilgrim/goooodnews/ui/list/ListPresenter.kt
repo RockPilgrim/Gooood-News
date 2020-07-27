@@ -5,24 +5,25 @@ import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import my.rockpilgrim.goooodnews.data.Model
 import my.rockpilgrim.goooodnews.data.OnLoadListener
+import my.rockpilgrim.goooodnews.data.pogo.Article
 import my.rockpilgrim.goooodnews.di.App
 
 @InjectViewState
-class ListPresenter(private val model: Model) : MvpPresenter<ListMvpView>(),
-    ItemRequest {
+class ListPresenter(private val model: Model) : MvpPresenter<ListMvpView>(), ItemRequest {
 
-    val TAG: String = "ListPresenter"
+    companion object{
+        val TAG: String = ListPresenter::class.java.simpleName
+    }
 
 
     init {
         Log.i(TAG, "init")
         App.appComponent.inject(this)
-
     }
 
     override fun attach() {
         Log.i(TAG,"attach()")
-        load()
+//        load()
     }
 
     private fun load(){
@@ -45,6 +46,10 @@ class ListPresenter(private val model: Model) : MvpPresenter<ListMvpView>(),
         viewState.update()
     }
 
+    override fun getArticle(position: Int): Article {
+        return model.getArticle(position)
+    }
+
     override fun getTitle(position: Int): String{
         return model.getTitle(position)
     }
@@ -58,6 +63,7 @@ class ListPresenter(private val model: Model) : MvpPresenter<ListMvpView>(),
     }
 
     override fun setFavorite(position: Int, isFavorite: Boolean) {
+
         model.setFavorite(position, isFavorite)
     }
 

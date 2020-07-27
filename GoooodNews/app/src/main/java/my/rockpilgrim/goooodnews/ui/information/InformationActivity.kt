@@ -39,7 +39,9 @@ class InformationActivity : MvpAppCompatActivity(),
     private fun initView(position:Int) {
         infoTitleTextView.text = presenter.getTitle(position)
         infoFullTextView.text = presenter.getFullText(position)
-        Picasso.get().load(presenter.getImage(position)).into(infoImageView)
+        if (presenter.getImage(position) != "") {
+            Picasso.get().load(presenter.getImage(position)).into(infoImageView)
+        }
     }
 
     private fun initToolBar() {

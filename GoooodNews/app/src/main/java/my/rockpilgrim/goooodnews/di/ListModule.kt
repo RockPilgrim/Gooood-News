@@ -12,8 +12,8 @@ class ListModule {
 
     @Provides
     @ListScope
-    fun provideListAdapter(): ListAdapter {
-        return ListAdapter()
+    fun provideListAdapter(listPresenter: ListPresenter): ListAdapter {
+        return ListAdapter(listPresenter)
     }
 
     @Provides
@@ -22,6 +22,8 @@ class ListModule {
         return ListPresenter(model)
     }
 
+
+    // Deprecated
     @Provides
     @ListScope
     fun provideItemRequest(listPresenter: ListPresenter): ItemRequest {

@@ -1,10 +1,14 @@
 package my.rockpilgrim.goooodnews.ui.list
 
+import my.rockpilgrim.goooodnews.data.pogo.Article
+
 interface ItemRequest {
 
     fun attach()
     fun update()
     fun findCategory(category: String)
+
+    fun getArticle(position: Int): Article
 
     fun getTitle(position: Int): String
     fun getCategory(position: Int): String

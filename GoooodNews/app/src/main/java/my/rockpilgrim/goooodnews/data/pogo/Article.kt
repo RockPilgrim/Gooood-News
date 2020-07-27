@@ -14,15 +14,20 @@ data class Article constructor(
     @PropertyElement(name = "category")
     var category: String,
 
-    @PropertyElement(name = "pubDate")
-    var date: String,
-
     @Path("enclosure")
     @Attribute(name = "url")
-    var url: String,
+    private var mUrl: String? = "https://cdn-st1.rtr-vesti.ru/vh/pictures/b/298/268/3.jpg",
+
+
+    @PropertyElement(name = "pubDate")
+    var date: String = "Tue, 07 Jul 2020 20:39:00 +0300",
+
 
     @PropertyElement(name = "yandex:full-text")
     var fullText: String
 ){
     var favorite = false
+
+    var url: String = mUrl ?: ""
+
 }

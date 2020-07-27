@@ -17,12 +17,13 @@ import javax.inject.Inject
 class ListActivity : MvpAppCompatActivity(),
     ListMvpView {
 
-    val TAG="ListActivity"
+    companion object{
+        const val TAG = "ListActivity"
+    }
     private var isRecyclerInitilized = false
 
     @Inject
     lateinit var adapter: ListAdapter
-
     @Inject
     @InjectPresenter
     lateinit var presenter: ListPresenter
@@ -31,17 +32,20 @@ class ListActivity : MvpAppCompatActivity(),
     fun provideListPresenter(): ListPresenter = presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG,"onCreate()")
         App.getListComponent().inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_activity)
         refreshLayout.isRefreshing = true
+
         presenter.attach()
+        presenter.update()
     }
 
     private fun initRecycler() {
         Log.i(TAG,"initRecycler()")
         adapter.setItemListener(getItemListener())
-        adapter.itemCount=presenter.getCount()
+        adapter.itemCount = presenter.getCount()
         listRecyclerView.adapter = adapter
 
         refreshLayout.setOnRefreshListener {
@@ -53,10 +57,12 @@ class ListActivity : MvpAppCompatActivity(),
     private fun getItemListener(): OnitemListener = object :
         OnitemListener {
         override fun onClick(position: Int) {
-            intent = Intent(this@ListActivity, InformationActivity().javaClass)
-            intent.putExtra(InformationActivity().TAG, position)
-            startActivity(intent)
-            App.clearListComponent()
+            if (!refreshLayout.isRefreshing) {
+                intent = Intent(this@ListActivity, InformationActivity().javaClass)
+                intent.putExtra(InformationActivity().TAG, position)
+                startActivity(intent)
+                App.clearListComponent()
+            }
         }
     }
 
@@ -71,15 +77,46 @@ class ListActivity : MvpAppCompatActivity(),
     }
 
     override fun update() {
+        Log.d(TAG, "update()")
         if (!isRecyclerInitilized) {
             initRecycler()
         } else {
-            adapter.itemCount=presenter.getCount()
+            adapter.itemCount = presenter.getCount()
             adapter.notifyDataSetChanged()
         }
     }
 
     private fun makeToast(line: String) {
         Toast.makeText(this, line, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart()")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG,"onResume()")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG,"onRestart()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG,"onPause()")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG,"onStop()")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG,"onDestroy()")
     }
 }

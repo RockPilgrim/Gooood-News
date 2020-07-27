@@ -1,68 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/itemContainer"
-    android:layout_marginTop="6dp"
-    android:layout_marginBottom="6dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_margin="16dp"
-        android:orientation="vertical"
+    <data>
+        <variable
+            name="article"
+            type="my.rockpilgrim.goooodnews.data.pogo.Article" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/itemContainer"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
-            android:orientation="horizontal"
+            android:layout_margin="16dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/itemTitleTextView"
-                android:text="@string/title_not_found"
-                android:textSize="22sp"
-                android:textColor="@color/colorTitleText"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:layout_weight="1"
-                android:layout_gravity="start"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
-            <ToggleButton
-                android:id="@+id/favoriteButton"
-                android:gravity="center"
-                android:layout_gravity="end|center_vertical"
-                android:background="@drawable/favorite_selector"
-                android:textOff=""
-                android:textOn=""
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/itemTitleTextView"
+                    android:text="@{article.title}"
+                    tools:text="@string/title_not_found"
+                    android:textSize="22sp"
+                    android:textColor="@color/colorTitleText"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_weight="1"
+                    android:layout_gravity="start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <ToggleButton
+                    android:id="@+id/favoriteButton"
+                    android:gravity="center"
+                    android:checked="@{article.favorite}"
+                    android:layout_gravity="end|center_vertical"
+                    android:background="@drawable/favorite_selector"
+                    android:textOff=""
+                    android:textOn=""
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/categoryButton"
+                    android:text="@{article.category}"
+                    tools:text="@string/category"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/itemDateTextView"
+                    app:data="@{article.date}"
+                    tools:text="@string/pubDate"
+                    android:maxLines="1"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
         </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/categoryButton"
-            android:text="@string/category"
-            android:textSize="12sp"
-            android:textAllCaps="false"
-            android:textColor="@color/colorAccent"
-            android:gravity="start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/itemDateTextView"
-            android:text="@string/pubDate"
-            android:maxLines="1"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>

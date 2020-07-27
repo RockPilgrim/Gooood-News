@@ -14,6 +14,8 @@ interface ApiRSS {
     fun getFeed(): Observable<Feed>
 
     companion object Factory{
+        private val BASE_URL="https://vesti.ru/"
+
         fun create():ApiRSS{
 
             val tikXml= TikXml.Builder()

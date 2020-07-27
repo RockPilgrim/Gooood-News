@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">GoooodNews</string>
+    <string name="app_name">Gooood News</string>
     <string name="title_not_found">Title not found</string>
     <string name="pubDate">Wed, 07 August 1879 01:57</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="connection_error">Connection error</string>
     <string name="category">category</string>
     <string name="image">image</string>
+
+    <string name="no_date">no date</string>
 </resources>
